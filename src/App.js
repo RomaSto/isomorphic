@@ -7,23 +7,23 @@ import PublicRoutes from './router';
 import themes from './settings/themes';
 
 import { themeConfig } from './settings';
-import DashAppHolder from './dashAppStyle';
+import AppHolder from './AppStyle';
 import Boot from './redux/boot';
 
 
-const DashApp = () => (
+const App = () => (
   <IntlProvider >
     <ThemeProvider theme={themes[themeConfig.theme]}>
-      <DashAppHolder>
+      <AppHolder>
         <Provider store={store}>
           <PublicRoutes history={history} />
         </Provider>
-      </DashAppHolder>
+      </AppHolder>
     </ThemeProvider>
   </IntlProvider>
 );
 Boot()
-  .then(() => DashApp())
+  .then(() => App())
   .catch(error => console.error(error));
 
-export default DashApp;
+export default App;

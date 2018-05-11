@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { palette, font } from 'styled-theme';
 
-const DashAppHolder = styled.div`
+const AppHolder = styled.div`
   font-family: ${font('primary', 0)};
 
   h1,
@@ -49,4 +49,4 @@ const DashAppHolder = styled.div`
   }
 `;
 
-export default DashAppHolder;
+export default AppHolder;

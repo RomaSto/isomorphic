@@ -39,9 +39,7 @@ class SignIn extends Component {
         <div className="isoLoginContentWrapper">
           <div className="isoLoginContent">
             <div className="isoLogoWrapper">
-              <Link to="/dashboard">
-                <IntlMessages id="page.signInTitle" />
-              </Link>
+              <IntlMessages id="page.signInTitle" />
             </div>
 
             <div className="isoSignInForm">
@@ -65,15 +63,6 @@ class SignIn extends Component {
               <p className="isoHelperText">
                 <IntlMessages id="page.signInPreview" />
               </p>
-
-              <div className="isoInputWrapper isoOtherLogin">
-                <Button onClick={this.handleLogin} type="primary btnFacebook">
-                  <IntlMessages id="page.signInFacebook" />
-                </Button>
-                <Button onClick={this.handleLogin} type="primary btnGooglePlus">
-                  <IntlMessages id="page.signInGooglePlus" />
-                </Button>
-              </div>
               <div className="isoCenterComponent isoHelperWrapper">
                 <Link to="" className="isoForgotPass">
                   <IntlMessages id="page.signInForgotPass" />
@@ -91,8 +80,8 @@ class SignIn extends Component {
 }
 
 export default connect(
-           state => ({
-    isLoggedIn: state.Auth.get('idToken') !== null ? true : false,
+  state => ({
+    isLoggedIn: state.Auth.get('idToken') !== null,
   }),
-  { login }
+  { login },
 )(SignIn);
