@@ -91,7 +91,7 @@ class SignIn extends Component {
 }
 
 export default connect(
-  state => ({
+           state => ({
     isLoggedIn: state.Auth.get('idToken') !== null ? true : false,
   }),
   { login }

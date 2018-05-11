@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Icon } from 'antd';
 import Popover from '../../components/uielements/popover';
 import IntlMessages from '../../components/utility/intlMessages';
 import userpic from '../../image/user1.png';
@@ -14,7 +15,7 @@ class TopbarUser extends Component {
     this.handleVisibleChange = this.handleVisibleChange.bind(this);
     this.hide = this.hide.bind(this);
     this.state = {
-      visible: false
+      visible: false,
     };
   }
   hide() {
@@ -48,15 +49,17 @@ class TopbarUser extends Component {
         trigger="click"
         visible={this.state.visible}
         onVisibleChange={this.handleVisibleChange}
-        arrowPointAtCenter={true}
+        arrowPointAtCenter
         placement="bottomLeft"
       >
         <div className="isoImgWrapper">
           <img alt="user" src={userpic} />
-          <span className="userActivity online" />
+          <span className="" />
+          <span> Roman  <Icon type="down" /></span>
         </div>
       </Popover>
     );
   }
 }
 export default connect(null, { logout })(TopbarUser);
+  <Icon type="down" />;

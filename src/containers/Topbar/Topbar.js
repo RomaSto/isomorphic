@@ -1,11 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Layout } from "antd";
-import appActions from "../../redux/app/actions";
-import TopbarUser from "./topbarUser";
-import TopbarWrapper from "./topbar.style";
-import themes from "../../settings/themes";
-import { themeConfig } from "../../settings";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Layout } from 'antd';
+import { Grid, Col, Row } from 'react-flexbox-grid';
+// import cx from 'classnames';
+import TopbarNotification from './topbarNotification';
+import appActions from '../../redux/app/actions';
+import TopbarUser from './topbarUser';
+import TopbarWrapper from './topbar.style';
+import themes from '../../settings/themes';
+import { themeConfig } from '../../settings';
 
 const { Header } = Layout;
 const { toggleCollapsed } = appActions;
@@ -17,36 +20,50 @@ class Topbar extends Component {
     const collapsed = this.props.collapsed && !this.props.openDrawer;
     const styling = {
       background: customizedTheme.backgroundColor,
-      position: "fixed",
-      width: "100%",
-      height: 70
+      // position: "fixed",
+      width: '100%',
+      height: 70,
+      padding: '0px',
     };
+    const stylingTopBarcontent = {
+      // background: customizedTheme.backgroundColor,
+      // position: "fixed",
+      height: '100%',
+      padding: '0px',
+      // paddingRight: '30px',
+      margin: '0',
+      display: 'flex',
+      justifyContent: 'flex-end',
+    };
+
     return (
       <TopbarWrapper>
         <Header
           style={styling}
           className={
-            collapsed ? "isomorphicTopbar collapsed" : "isomorphicTopbar"
-          }
+        collapsed ? 'isomorphicTopbar collapsed' : 'isomorphicTopbar'
+      }
         >
-          <div className="isoLeft">
-            <button
-              className={
-                collapsed ? "triggerBtn menuCollapsed" : "triggerBtn menuOpen"
-              }
-              style={{ color: customizedTheme.textColor }}
-              onClick={toggleCollapsed}
-            />
-          </div>
+          {
+            // style = {{ alignItems: 'flex-end', justifyContent: 'flex-end', display: 'flex' }}
+          }
+          <Grid >
 
-          <ul className="isoRight">
-            <li
-              onClick={() => this.setState({ selectedItem: "user" })}
-              className="isoUser"
-            >
-              <TopbarUser />
-            </li>
-          </ul>
+
+            <ul style={stylingTopBarcontent} className="isoRight">
+              <li >
+                <TopbarNotification />
+              </li>
+              <li
+                onClick={() => this.setState({ selectedItem: 'user' })}
+                className="isoUser"
+              >
+                <TopbarUser />
+              </li>
+            </ul>
+
+
+          </Grid>
         </Header>
       </TopbarWrapper>
     );
@@ -55,7 +72,7 @@ class Topbar extends Component {
 
 export default connect(
   state => ({
-    ...state.App.toJS()
+    ...state.App.toJS(),
   }),
-  { toggleCollapsed }
+  { toggleCollapsed },
 )(Topbar);

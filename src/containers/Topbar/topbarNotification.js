@@ -9,26 +9,26 @@ const demoNotifications = [
     id: 1,
     name: 'David Doe',
     notification:
-      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner'
+      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner',
   },
   {
     id: 2,
     name: 'Navis Doe',
     notification:
-      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner'
+      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner',
   },
   {
     id: 3,
     name: 'Emanual Doe',
     notification:
-      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner'
+      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner',
   },
   {
     id: 4,
     name: 'Dowain Doe',
     notification:
-      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner'
-  }
+      'A National Book Award Finalist An Edgar Award Finalist A California Book Award Gold Medal Winner',
+  },
 ];
 
 class TopbarNotification extends Component {
@@ -37,7 +37,7 @@ class TopbarNotification extends Component {
     this.handleVisibleChange = this.handleVisibleChange.bind(this);
     this.hide = this.hide.bind(this);
     this.state = {
-      visible: false
+      visible: false,
     };
   }
   hide() {
@@ -79,9 +79,9 @@ class TopbarNotification extends Component {
         <div className="isoIconWrapper">
           <i
             className="ion-android-notifications"
-            style={{ color: customizedTheme.textColor }}
+            // style={{ color: 'red' }}
           />
-          <span>{demoNotifications.length}</span>
+          <span style={{ backgroundColor: 'red' }}>{demoNotifications.length}</span>
         </div>
       </Popover>
     );
@@ -90,5 +90,5 @@ class TopbarNotification extends Component {
 
 export default connect(state => ({
   ...state.App.toJS(),
-  customizedTheme: state.ThemeSwitcher.toJS().topbarTheme
+  // customizedTheme: state.ThemeSwitcher.toJS().topbarTheme
 }))(TopbarNotification);

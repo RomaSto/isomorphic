@@ -11,12 +11,20 @@ const sagaMiddleware = createSagaMiddleware();
 const routeMiddleware = routerMiddleware(history);
 const middlewares = [thunk, sagaMiddleware, routeMiddleware];
 
+
+let composeEnhancers = compose;
+if (process.env.NODE_ENV === 'development') {
+  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+}
+
 const store = createStore(
   combineReducers({
     ...reducers,
-    router: routerReducer
+    router: routerReducer,
   }),
-  compose(applyMiddleware(...middlewares))
+  /* preloadedState, */
+  composeEnhancers(applyMiddleware(...middlewares)),
 );
+
 sagaMiddleware.run(rootSaga);
 export { store, history };
